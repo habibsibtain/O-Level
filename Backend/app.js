@@ -1,15 +1,20 @@
 import express from "express";
 import dotenv from "dotenv"
 import cors from "cors"
+import connectDB from "./db/db.js";
 
 
 dotenv.config();
 
+
 const app = express();
-app.use(cors())
+
+connectDB(); 
+
+app.use(cors()) 
 
 app.get('/', (req, res)=>{
   res.send("Hello")
 })
 
-export default app;
+export default app; 
