@@ -3,14 +3,16 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
 const userSchema = new mongoose.Schema({
-  firstname: {
-    type: String,
-    required: true,
-    minLength: [3, "Firstname must be at least 3 characters long"]
-  },
-  lastname: {
-    type: String,
-    minLength: [3, "Lastname must be at least 3 characters long"]
+  fullname: {
+    firstname: {
+      type: String,
+      required: true,
+      minLength: [3, "Firstname must be at least 3 characters long"]
+    },
+    lastname: {
+      type: String,
+      minLength: [3, "Lastname must be at least 3 characters long"]
+    },
   },
   email: {
     type: String,
@@ -34,7 +36,7 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-usesrSchema.methods.generateAuthToken = function() {
+userSchema.methods.generateAuthToken = function() {
   const token = jwt.sign(
     { _id: this._id},
     process.env.JWT_SECRET,

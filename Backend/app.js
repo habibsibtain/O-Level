@@ -12,9 +12,13 @@ const app = express();
 connectDB(); 
 
 app.use(cors()) 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.get('/', (req, res)=>{
-  res.send("Hello")
-})
+import userRoutes from "./routes/user.route.js"
+
+app.use("/users", userRoutes)
+
+
 
 export default app; 
