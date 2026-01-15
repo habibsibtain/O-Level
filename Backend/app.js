@@ -17,9 +17,12 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
+
 import userRoutes from "./routes/user.route.js"
+import captainRoutes from "./routes/captain.route.js"
 
 app.use("/users", userRoutes)
+app.use("/captains", captainRoutes)
 
 
 
